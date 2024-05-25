@@ -1,0 +1,372 @@
+.admin-header {
+  font-size: 2.3em;
+  font-weight: 400;
+  text-align: center;
+  margin: 0.5em 0.3em;
+}
+
+.admin-btns-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  flex: 1;
+}
+
+.admin-btn {
+  width: 100%;
+  text-decoration: none;
+  color: var(--light-text-color);
+  font-size: 1.7em;
+  /* text-align: center; */
+  background: var(--lighter-dark-color);
+  border: 1px solid var(--border-color);
+
+  border-left: none;
+  border-right: none;
+
+  border-radius: 0.1em;
+  padding: 0.8rem;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.admin-btn.secondary:hover {
+  background: var(--lighter-dark-color);
+  border: 1px solid var(--dim-border-color);
+}
+
+.admin-btn.small {
+  font-size: 1.3em;
+}
+
+form .admin-btn {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.admin-btn.admin-logout-btn {
+  background: #1b1b1b;
+}
+
+.admin-btn:hover {
+  background: var(--theme-color);
+  border-color: var(--theme-dim-color);
+}
+
+.admin-btn.admin-logout-btn:hover {
+  background: var(--theme-dim-color);
+  border-color: var(--theme-color);
+}
+
+.admin-btn:active {
+  filter: brightness(0.9);
+}
+
+.subbutton-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-btn.subbtn {
+  padding: 0.5rem;
+  padding-left: 1.7rem;
+  border-top: none;
+  font-size: 1.6em;
+}
+
+.delete-btn {
+  background: #240202;
+  border: 1px solid #530303;
+}
+
+form .delete-btn {
+  border-right: 1px solid #530303;
+  border-left: 1px solid #530303;
+}
+
+.delete-btn:hover {
+  background: #630707;
+  border-color: #660303;
+}
+/* ------------ */
+/* Registration */
+/* ------------ */
+
+.admin-page-wrapper {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  margin: 50px auto;
+  padding: 0 10px;
+}
+
+.admin-page-wrapper::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #000;
+  box-shadow: 0 0 70px 70px #000;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.admin-page-wrapper.is-pending::before {
+  z-index: 5;
+}
+
+/* spinner */
+
+.is-pending::after {
+  position: absolute;
+  content: "";
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+
+  border: 7px solid rgba(238, 238, 238, 0.358);
+  border-radius: 50%;
+  border-top: 7px solid var(--theme-color);
+  width: 70px;
+  height: 70px;
+  animation: spin 0.8s linear infinite;
+  z-index: 10;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* /spinner */
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.tab-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background: var(--border-color);
+  transition: 0.2s;
+}
+
+.tab-container.reg-admin::after {
+  left: 50%;
+}
+
+.tab-container span {
+  position: relative;
+  flex-basis: 50%;
+  text-align: center;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5em 0;
+  user-select: none;
+}
+
+.registration-form {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  column-gap: 0.5em;
+  row-gap: 1em;
+}
+
+.registration-form .input-box {
+  flex-basis: calc(50% - 0.25em);
+}
+
+.registration-form .input-box input[type="date"] {
+  color: var(--lighter-dark-color);
+  transition: 0.2s;
+}
+
+.registration-form .input-box input[type="date"]:focus,
+.registration-form .input-box input[type="date"]:valid {
+  color: var(--light-text-color);
+}
+
+.registration-form .input-box label {
+  color: var(--light-text-color);
+}
+
+.registration-form select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.registration-form .input-box input,
+.registration-form .input-box select {
+  padding: 0.7rem 1rem;
+  border: 1px solid #5c5c5c;
+}
+
+.registration-form .input-box input:valid ~ label,
+.registration-form .input-box input:focus ~ label,
+.registration-form .input-box select:valid ~ label,
+.registration-form .input-box select:focus ~ label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 1.3em;
+  backdrop-filter: blur(2px);
+  border-radius: 5px;
+  padding: 0 3px;
+}
+
+.admin-page-wrapper .admin-btn {
+  margin-top: 0.7em;
+}
+
+.admin-page-wrapper .admin-btn.small {
+  margin-top: 0;
+}
+
+.registration-form input[type="date"]::-webkit-inner-spin-button,
+.registration-form input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Custom checkbox */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.8em;
+  border: none;
+  padding: 0.75rem;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox label {
+  position: relative;
+  padding-left: 1.4em;
+  user-select: none;
+}
+
+.custom-checkbox label::before {
+  position: absolute;
+  content: "";
+  width: 1em;
+  height: 1em;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--lighter-dark-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0.3em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.custom-checkbox input[type="checkbox"]:checked ~ label::before {
+  content: "\2713";
+}
+
+/* /Custom checkbox */
+
+.error-msg-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1.5rem;
+  align-items: center;
+  color: rgb(255, 126, 126);
+}
+
+/* Department management */
+
+.department-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.department-item {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  background: var(--lighter-dark-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.department-item .bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-size: 0.9em;
+}
+
+.department-item .head-label {
+  color: var(--dark-text-color);
+  margin-right: 0.2em;
+}
+
+.department-item .change-btn {
+  appearance: none;
+  border: 1px solid var(--theme-dim-color);
+  background: var(--theme-color);
+  font-size: 0.8em;
+  color: var(--light-text-color);
+  padding: 0.2em 0.4em;
+  border-radius: 0.3em;
+  transition: 0.1s;
+  text-decoration: none;
+}
+
+.department-item .change-btn:hover {
+  background: var(--theme-dim-color);
+}
+
+.department-item .change-btn:active {
+  filter: brightness(0.8);
+}
+
+.btn-container-horizontal {
+  position: relative;
+  display: flex;
+  width: 100%;
+  gap: 0.5em;
+}
+
+.save-changes-btn {
+  flex: 1;
+}
+
+.delete-btn svg {
+  fill: var(--dark-text-color);
+}
+
+.save-changes-btn + .delete-btn {
+  flex: 0;
+}
