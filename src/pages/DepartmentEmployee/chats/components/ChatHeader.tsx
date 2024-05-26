@@ -6,18 +6,21 @@ import { useModalWindowsContext } from "../../../../context/ModalWindowsContext"
 import { BASE_API_URL, getLastOnlineDateTime } from "../../../../untils";
 
 type Props = {
-  chatData: {
-    chatId: number;
-    userId?: number;
-    firstName?: string;
-    lastName?: string;
-    name?: string;
-    isOnline?: boolean;
-    lastTimeOnline?: string;
-    members_number?: number;
-    subscribers_number?: number;
-    adminIds?: [number];
-  } | null;
+  chatData:
+    | {
+        chatId: number;
+        userId?: number;
+        firstName?: string;
+        lastName?: string;
+        name?: string;
+        isOnline?: boolean;
+        lastTimeOnline?: string;
+        members_number?: number;
+        subscribers_number?: number;
+        adminIds?: [number];
+      }
+    | any
+    | null;
 
   chatType: "p" | "g" | "c";
 };
@@ -42,7 +45,7 @@ export const ChatHeader = ({ chatData, chatType }: Props) => {
       : chatData?.name || "";
 
   useEffect(() => {
-    let timeout = null;
+    let timeout: any = null;
     if (!chatData?.isOnline && chatData?.lastTimeOnline) {
       setLastTimeOnline(getLastOnlineDateTime(chatData.lastTimeOnline));
       console.log("lastTimeOnline set");

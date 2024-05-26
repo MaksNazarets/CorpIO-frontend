@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // export const BASE_URL = "http://localhost:5000";
-export const BASE_URL = "https://helical-fin-424413-q2.lm.r.appspot.com"; // production
 // export const BASE_URL = "https://knjgg5wc-5000.euw.devtunnels.ms";
+export const BASE_URL = "https://helical-fin-424413-q2.lm.r.appspot.com"; // production
 export const BASE_API_URL = BASE_URL + "/api";
 export const MESSAGES_TO_LOAD_NUMBER = 30;
 // export const baseUrl = "https://xh5wtqf8-5000.euw.devtunnels.ms/api";

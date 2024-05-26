@@ -115,7 +115,7 @@ export const ChatBar = () => {
                     key={group.id}
                   />
                 )
-            ) || "asdasd"
+            )
           : chats?.channels.map(
               (channel) =>
                 matchesFilters(channel.name) && (

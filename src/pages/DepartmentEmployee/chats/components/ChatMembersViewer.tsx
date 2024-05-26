@@ -210,7 +210,9 @@ const ChatMemberViewer = ({ groupId, closeFn }: ViewerProps) => {
                     setProfileViewerUserId(m.id);
                   }
                 }}
-                removable={adminUserId === (me as User).id}
+                removable={
+                  adminUserId === (me as User).id && m.id !== (me as User).id
+                }
                 removeFn={() => removeMember(m.id)}
               />
             ))}

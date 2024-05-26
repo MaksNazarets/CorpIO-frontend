@@ -14,17 +14,22 @@ import {
 } from "../../../untils";
 import { ChatListItem } from "../chats/ChatListItem";
 
-type AttachmentProps = { file: { filename: string; size: number } };
+type AttachmentProps = { file: { id: number; filename: string; size: number } };
 
 const ProjectAttachment = ({ file }: AttachmentProps) => {
   return (
-    <div className="project-attachment" key={file.filename}>
+    <a
+      href={`${BASE_API_URL}/projects/get-attachment?attId=${file.id}`}
+      download={file.filename}
+      className="project-attachment"
+      key={file.filename}
+    >
       <div className="project-attachment__name">
         <span className="filename">{getFilenameParts(file.filename).name}</span>
         .<span>{getFilenameParts(file.filename).extension}</span>
       </div>
       <div className="project-attachment__size">{formatBytes(file.size)}</div>
-    </div>
+    </a>
   );
 };
 
@@ -130,15 +135,6 @@ function ProjectPage() {
             </>
           )}
         </div>
-        {/* {(user as User).isHeadOfDepartment &&
-          (!projectData.department ||
-            projectData.department.id === (user as User).department?.id) && (
-            <div className="chat-options">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          )} */}
       </div>
 
       <animated.div className="project-info" style={springs}>
